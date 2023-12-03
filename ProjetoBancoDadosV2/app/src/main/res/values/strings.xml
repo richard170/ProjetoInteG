@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Loja</string>
+    <string name="menu">Menu</string>
+
+    <string name="lista_cliente">Lista de Clientes</string>
+    <string name="cad_cliente">Clientes</string>
+
+    <string name="lista_categoria">Lista de Categorias</string>
+    <string name="cad_categoria">Categorias</string>
+
+    <string name="lista_produto">Lista de Produtos</string>
+    <string name="cad_produto">Produtos</string>
+
+    <string name="lista_veiculo">Lista de Veículos</string>
+    <string name="cad_veiculo">Veículos</string>
+
+    <string name="btn_cad">Cadastrar ...</string>
+    <string name="btn_gravar">Gravar</string>
+    <string name="btn_voltar">Voltar</string>
+    <string name="btn_excluir">Excluir</string>
+    <string name="btn_pesq">Pesquisar</string>
+
+    <string name="codigo">Código</string>
+    <string name="nome">Nome</string>
+    <string name="fone">Fone</string>
+    <string name="email">Email</string>
+    <string name="obs">Observação</string>
+    <string name="custo">Custo</string>
+    <string name="preco">Preço Venda</string>
+    <string name="und">Unidade</string>
+    <string name="qtde">Quantidade</string>
+
+    <string name="placa">Placa</string>
+    <string name="modelo_ano">Modelo/Ano</string>
+    <string name="btn_cad_veiculo">Cadastrar Veículo</string>
+    <string name="telefone">Telefone</string>
+</resources>
