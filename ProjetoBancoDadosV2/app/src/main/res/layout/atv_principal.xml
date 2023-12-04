@@ -19,10 +19,10 @@
 
     <ImageButton
         android:id="@+id/btnVeiculo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100sp"
-        android:layout_marginRight="100sp"
+        android:layout_width="90dp"
+        android:layout_height="86dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
         android:background="@android:color/white"
         app:srcCompat="@drawable/carro" />
 
@@ -49,6 +49,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Deslogar"
+        android:textAlignment="center" />
+
+    <!-- Novo ImageButton para abrir AtvEscolhaChat -->
+    <ImageButton
+        android:id="@+id/btnEscolhaChat"
+        android:layout_width="90dp"
+        android:layout_height="86dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:background="@android:color/white"
+        app:srcCompat="@drawable/chat" />
+
+    <TextView
+        android:id="@+id/textViewEscolhaChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escolher Chat"
         android:textAlignment="center" />
 
 </LinearLayout>

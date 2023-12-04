@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AtvPrincipal extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton btnVeiculo, btnProduto, btnCategoria, btnDeslogar;
+    ImageButton btnVeiculo, btnDeslogar, btnEscolhaChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +21,19 @@ public class AtvPrincipal extends AppCompatActivity implements View.OnClickListe
         btnVeiculo.setOnClickListener(this);
         btnDeslogar = findViewById(R.id.btnDeslogar);
         btnDeslogar.setOnClickListener(this);
+        btnEscolhaChat = findViewById(R.id.btnEscolhaChat); // Inicialize o novo botão
+        btnEscolhaChat.setOnClickListener(this); // Adicione o botão à lista de listeners
     }
 
     @Override
     public void onClick(View v) {
         if (v == btnVeiculo) {
-            Intent atv = new Intent(this, AtvListaVeiculo.class);
-            startActivity(atv);
+            Intent atvListaVeiculo = new Intent(this, AtvListaVeiculo.class);
+            startActivity(atvListaVeiculo);
         } else if (v == btnDeslogar) {
             showLogoutConfirmationDialog();
+        } else if (v == btnEscolhaChat) {
+            redirectToEscolhaChat();
         }
     }
     private void showLogoutConfirmationDialog() {
@@ -56,5 +60,10 @@ public class AtvPrincipal extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, AtvPrincipalEscolha.class);
         startActivity(intent);
         finish(); // fecha a tela atual para não voltar
+    }
+
+    private void redirectToEscolhaChat() {
+        Intent intent = new Intent(this, AtvEscolhaChat.class);
+        startActivity(intent);
     }
 }
