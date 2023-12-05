@@ -3,6 +3,7 @@ package com.example.projetobancodados;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.projetobancodados.dao.Conexao;
 import com.example.projetobancodados.util.ChatManager;
 
 public class AtvEscolhaChat extends AppCompatActivity {
@@ -54,12 +57,48 @@ public class AtvEscolhaChat extends AppCompatActivity {
         String userId = editTextChat.getText().toString().trim();
 
         if (!userId.isEmpty()) {
-            String mensagensDoChat = obterMensagensDoChat(userId);
-            exibirMensagensNoChat(mensagensDoChat);
+            // Verifique se a tabela de chat existe antes de tentar acessá-la
+            if (verificarSeTabelaChatExiste(userId)) {
+                String mensagensDoChat = obterMensagensDoChat(userId);
+                exibirMensagensNoChat(mensagensDoChat);
+            } else {
+                exibirMensagem("Nenhum usuário cadastrado com este ID");
+            }
         } else {
             // Trate o caso em que o ID do usuário está vazio
         }
     }
+
+    private boolean verificarSeTabelaChatExiste(String userId) {
+        // Obtenha a instância do banco de dados
+        Conexao conexao = new Conexao(this);
+        SQLiteDatabase db = conexao.getReadableDatabase();
+
+        // Verifique se a tabela "chat_<userId>" existe
+        String tabelaChat = "chat_" + userId;
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name=?", new String[]{tabelaChat});
+
+        boolean tabelaExiste = cursor.getCount() > 0;
+
+        // Feche o Cursor e a conexão com o banco de dados
+        cursor.close();
+        conexao.close();
+
+        return tabelaExiste;
+    }
+
+    private void exibirMensagem(String mensagem) {
+        // Aqui você pode exibir a mensagem da forma desejada, por exemplo, usando um AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(mensagem)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+        builder.create().show();
+    }
+
 
     private String obterMensagensDoChat(String userId) {
         // Obtenha as mensagens do chat usando o ChatManager
@@ -93,7 +132,10 @@ public class AtvEscolhaChat extends AppCompatActivity {
     }
 
     private void exibirMensagensNoChat(String mensagens) {
-        // Exiba as mensagens no layout do chat
+        // Limpe todas as mensagens existentes no layout do chat
+        chatContainer.removeAllViews();
+
+        // Exiba as novas mensagens no layout do chat
         TextView textViewChat = new TextView(this);
         textViewChat.setText(mensagens);
 
@@ -109,6 +151,7 @@ public class AtvEscolhaChat extends AppCompatActivity {
             }
         });
     }
+
 
     private void enviarMensagem() {
         String mensagem = editTextMensagem.getText().toString().trim();
