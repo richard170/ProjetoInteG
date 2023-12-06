@@ -25,11 +25,11 @@
         <activity android:name=".AtvPrincipal" />
         <activity android:name=".AtvLoginAdmin" />
         <activity android:name=".AtvLoginUsuario" />
-        <activity android:name=".AtvStatusUsuario" />
         <activity android:name=".AtvListaVeiculo"></activity>
         <activity android:name=".AtvCadVeiculo" />
         <activity android:name=".util.ChatManager" />
         <activity android:name=".AtvEscolhaChat" />
+        <activity android:name=".AtvChatUsuario" />
 
     </application>
 

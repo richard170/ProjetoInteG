@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,6 +58,11 @@ public class AtvEscolhaChat extends AppCompatActivity {
         String userId = editTextChat.getText().toString().trim();
 
         if (!userId.isEmpty()) {
+
+            String tabelaChat = "chat_" + userId;
+            // Adicione um log para rastrear a tabela que o chat do usuário está abrindo
+            Log.d("AtvEscolhaChat", "Chat do admin abriu a tabela: " + tabelaChat);
+
             // Verifique se a tabela de chat existe antes de tentar acessá-la
             if (verificarSeTabelaChatExiste(userId)) {
                 String mensagensDoChat = obterMensagensDoChat(userId);
@@ -101,8 +107,9 @@ public class AtvEscolhaChat extends AppCompatActivity {
 
 
     private String obterMensagensDoChat(String userId) {
+        String tabelaChat = "chat_" + userId;
         // Obtenha as mensagens do chat usando o ChatManager
-        Cursor cursor = chatManager.obterMensagensDoChat(userId);
+        Cursor cursor = chatManager.obterMensagensDoChat(tabelaChat);
 
         // Verifique se o Cursor é não nulo antes de tentar acessar os dados
         if (cursor != null) {
@@ -157,6 +164,9 @@ public class AtvEscolhaChat extends AppCompatActivity {
         String mensagem = editTextMensagem.getText().toString().trim();
 
         if (!mensagem.isEmpty()) {
+
+            String tabelaChatAdmin = String.valueOf(editTextChat.getText());
+            Log.d("AtvEscolhaChat", "Mensagem do admin salva na tabela: " + tabelaChatAdmin);
             // Adicione a mensagem ao layout de mensagens
             String mensagemFormatada = "admin: " + mensagem;
 
@@ -164,7 +174,7 @@ public class AtvEscolhaChat extends AppCompatActivity {
             exibirMensagemNoChat(mensagemFormatada);
 
             // Salva a mensagem formatada no banco de dados
-            chatManager.salvarMensagem(String.valueOf(editTextChat.getText()), mensagemFormatada);
+            chatManager.salvarMensagem("chat_"+String.valueOf(editTextChat.getText()), mensagemFormatada);
 
             // Limpa o campo de mensagem após o envio
             editTextMensagem.setText("");

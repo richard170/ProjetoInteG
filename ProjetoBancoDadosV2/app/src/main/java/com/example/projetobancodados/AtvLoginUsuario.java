@@ -1,7 +1,7 @@
 package com.example.projetobancodados;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +16,15 @@ public class AtvLoginUsuario extends AppCompatActivity {
     private EditText editTextUsuarioPassword;
     private Button btnUsuarioLogin;
     private Button btnVoltarPrincipalEscolhaUsuario;
+    private UsuarioDao usuarioDao;
+    private long idDoUsuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.atv_login_usuario);
+
+        usuarioDao = new UsuarioDao(this);
 
         editTextUsuarioUsername = findViewById(R.id.editTextUsuarioUsername);
         editTextUsuarioPassword = findViewById(R.id.editTextUsuarioPassword);
@@ -30,15 +34,22 @@ public class AtvLoginUsuario extends AppCompatActivity {
         btnUsuarioLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Implemente a lógica de login de usuário aqui
-                if (isValidUsuarioLogin()) {
-                    // Se o login for válido, redireciona para a StatusUsuarioActivity
-                    Intent intent = new Intent(AtvLoginUsuario.this, AtvStatusUsuario.class);
-                    startActivity(intent);
-                    finish(); // fecha a tela de login para não voltar
+                String usuarioUsername = editTextUsuarioUsername.getText().toString().trim();
+                String usuarioPassword = editTextUsuarioPassword.getText().toString().trim();
+
+                if (usuarioDao != null) {
+                    idDoUsuarioLogado = usuarioDao.obterIdDoUsuarioLogado(usuarioUsername, usuarioPassword);
+
+                    if (isValidUsuarioLogin()) {
+                        Intent intent = new Intent(AtvLoginUsuario.this, AtvChatUsuario.class);
+                        intent.putExtra("userId", idDoUsuarioLogado);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(AtvLoginUsuario.this, "Login de usuário inválido", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    // Caso contrário, exibe uma mensagem de erro
-                    Toast.makeText(AtvLoginUsuario.this, "Login de usuário inválido", Toast.LENGTH_SHORT).show();
+                    Log.e("AtvLoginUsuario", "usuarioDao is null");
                 }
             }
         });
@@ -46,32 +57,30 @@ public class AtvLoginUsuario extends AppCompatActivity {
         btnVoltarPrincipalEscolhaUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Botão para voltar à tela PrincipalEscolha
                 Intent intent = new Intent(AtvLoginUsuario.this, AtvPrincipalEscolha.class);
                 startActivity(intent);
-                finish(); // fecha a tela de login para não voltar
+                finish();
             }
         });
     }
 
     private boolean isValidUsuarioLogin() {
-        // Implemente a lógica de validação do login de usuário conforme necessário
         String usuarioUsername = editTextUsuarioUsername.getText().toString().trim();
         String usuarioPassword = editTextUsuarioPassword.getText().toString().trim();
 
-        // Verifique no banco de dados se o login e a senha correspondem a algum usuário
-        UsuarioDao usuarioDao = new UsuarioDao(this);
-        boolean isValid = usuarioDao.validarUsuario(usuarioUsername, usuarioPassword);
-        usuarioDao.close();
-
-        return isValid;
+        if (usuarioDao != null) {
+            return usuarioDao.validarUsuario(usuarioUsername, usuarioPassword);
+        } else {
+            Log.e("AtvLoginUsuario", "usuarioDao is null");
+            return false;
+        }
     }
 
-    // Método de exemplo para obter o objeto Long (substitua por sua lógica real)
-    private Long getObjetoLong() {
-        // Lógica para obter o objeto Long (substitua por sua lógica real)
-        // Certifique-se de que o objeto Long seja inicializado corretamente
-        // e não seja nulo
-        return 123L; // Substitua pelo valor real ou lógica para obter o objeto Long
+    @Override
+    protected void onDestroy() {
+        if (usuarioDao != null) {
+            usuarioDao.close();
+        }
+        super.onDestroy();
     }
 }

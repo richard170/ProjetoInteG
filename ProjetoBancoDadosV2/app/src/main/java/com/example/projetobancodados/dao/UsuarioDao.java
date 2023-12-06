@@ -31,6 +31,28 @@ public class UsuarioDao extends SQLiteOpenHelper {
         }
     }
 
+    public long obterIdDoUsuarioLogado(String usuarioUsername, String usuarioPassword) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {"id"};
+        String selection = "login = ? AND senha = ?";
+        String[] selectionArgs = {usuarioUsername, usuarioPassword};
+
+        Cursor cursor = db.query("usuario", projection, selection, selectionArgs, null, null, null);
+
+        long idDoUsuario = -1; // Valor padrão se não encontrar um usuário
+
+        if (cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex("id");
+            idDoUsuario = cursor.getLong(columnIndex);
+        }
+
+        cursor.close();
+
+        return idDoUsuario;
+    }
+
+
     public long inserirUsuario(String login, String senha) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
