@@ -26,8 +26,15 @@
     <string name="btn_cad_veiculo">Cadastrar Veículo</string>
     <string name="telefone">Telefone</string>
     <string-array name="status_options">
-        <item>Em análise</item>
-        <item>Veículo pronto</item>
-        <!-- Adicione outras opções conforme necessário -->
+        <item>🟡 Diagnóstico em Andamento</item>
+        <item>🟢 Aguardando Autorização</item>
+        <item>🟢 Aguardando Peças</item>
+        <item>🟢 Em Processo de Reparo</item>
+        <item>🔴 Atraso na Entrega</item>
+        <item>🔴 Reparo Não Autorizado</item>
+        <item>🔴 Peças Indisponíveis</item>
+        <item>🟠 Reparo Adicional Necessário</item>
+        <item>🔵 Veículo em Teste</item>
+        <item>🟢 Veículo pronto</item>
     </string-array>
 </resources>

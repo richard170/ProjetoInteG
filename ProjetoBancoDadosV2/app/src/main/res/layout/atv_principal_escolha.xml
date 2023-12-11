@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10sp"
-    android:orientation="vertical"
-    tools:context=".AtvPrincipalEscolha">
+    android:layout_margin="0sp">
+
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/escolha_login" />
 
     <Button
         android:id="@+id/btnLoginAdmin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login Admin" />
+        android:layout_width="183dp"
+        android:layout_height="67dp"
+        android:layout_below="@+id/btnLoginUsuario"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="24dp"
+        android:background="#004285F4"
+        android:text=""
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/btnLoginUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login Usuário" />
+        android:layout_width="285dp"
+        android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="436dp"
+        android:background="#004285F4"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
-</LinearLayout>
+
+</RelativeLayout>

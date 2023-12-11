@@ -1,37 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:padding="0dp"
     tools:context=".AtvLoginAdmin">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="882dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_admin" />
 
     <EditText
         android:id="@+id/editTextAdminUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:inputType="text"/>
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="60dp"
+        android:background="#00000000"
+        android:hint="            Username"
+        android:inputType="text"
+        android:textColor="#000000" />
 
     <EditText
         android:id="@+id/editTextAdminPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"/>
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_below="@+id/editTextAdminUsername"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="60dp"
+        android:background="#00000000"
+        android:hint="            Password"
+        android:inputType="textPassword"
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/btnAdminLogin"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login as Admin"/>
+        android:layout_below="@+id/editTextAdminPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="60dp"
+        android:background="#004285F4"
+        android:text=""
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnVoltarPrincipalEscolha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back to PrincipalEscolha"/>
+        android:layout_width="61dp"
+        android:layout_height="35dp"
+        android:background="#004285F4"
+        android:text=""
+        android:textColor="#000000"
+        app:icon="@drawable/voltar"
+        app:iconSize="30dp"
+        app:iconTint="#000000" />
 
-</LinearLayout>
+</RelativeLayout>

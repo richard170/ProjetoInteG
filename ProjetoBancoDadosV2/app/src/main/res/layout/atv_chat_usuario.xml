@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     tools:context=".AtvChatUsuario">
 
+    <!-- Botão Deslogar -->
+
     <ScrollView
         android:id="@+id/scrollViewUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_width="363dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMensagemUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/chatContainerUsuario"
@@ -26,25 +33,44 @@
 
     <EditText
         android:id="@+id/editTextMensagemUsuario"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Digite sua mensagem"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnviarMensagemUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewUsuario" />
 
     <Button
         android:id="@+id/btnEnviarMensagemUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Enviar Mensagem do Usuário" />
+        android:layout_width="116dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#FF0000"
+        android:text="Enviar Mensagem do Usuário"
+        android:textColor="#000000"
+        app:icon="@android:drawable/ic_menu_send"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMensagemUsuario" />
 
-    <!-- Botão Deslogar -->
     <Button
         android:id="@+id/btnDeslogar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Deslogar" />
+        android:layout_marginTop="4dp"
+        android:background="#00FFFFFF"
+        android:text="Deslogar"
+        android:textColor="#000000"
+        app:icon="@drawable/deslogar"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
