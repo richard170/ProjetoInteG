@@ -2,15 +2,6 @@
     <string name="app_name">Loja</string>
     <string name="menu">Menu</string>
 
-    <string name="lista_cliente">Lista de Clientes</string>
-    <string name="cad_cliente">Clientes</string>
-
-    <string name="lista_categoria">Lista de Categorias</string>
-    <string name="cad_categoria">Categorias</string>
-
-    <string name="lista_produto">Lista de Produtos</string>
-    <string name="cad_produto">Produtos</string>
-
     <string name="lista_veiculo">Lista de Veículos</string>
     <string name="cad_veiculo">Veículos</string>
 
@@ -34,4 +25,9 @@
     <string name="modelo_ano">Modelo/Ano</string>
     <string name="btn_cad_veiculo">Cadastrar Veículo</string>
     <string name="telefone">Telefone</string>
+    <string-array name="status_options">
+        <item>Em análise</item>
+        <item>Veículo pronto</item>
+        <!-- Adicione outras opções conforme necessário -->
+    </string-array>
 </resources>

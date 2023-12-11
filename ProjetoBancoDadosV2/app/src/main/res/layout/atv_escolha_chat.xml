@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,13 +20,28 @@
         android:id="@+id/editTextChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite o nome do chat" />
+        android:hint="Digite o nome do chat"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnIniciarChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar Chat" />
+
+    <Spinner
+        android:id="@+id/statusSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:entries="@array/status_options" />
+
+    <Button
+        android:id="@+id/btnEnviarStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar Status" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -51,12 +65,20 @@
         android:id="@+id/editTextMensagem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite sua mensagem" />
+        android:hint="Digite sua mensagem"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnEnviarMensagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enviar Mensagem" />
+
+    <!-- Botão Voltar -->
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar para Principal" />
 
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.content.Intent;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,7 @@ public class AtvChatUsuario extends AppCompatActivity {
     private LinearLayout chatContainerUsuario;
     private ChatManager chatManager;
     private Long userId; // Variável para armazenar o ID do usuário
+    private Button btnDeslogar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class AtvChatUsuario extends AppCompatActivity {
         btnEnviarMensagemUsuario = findViewById(R.id.btnEnviarMensagemUsuario);
         chatContainerUsuario = findViewById(R.id.chatContainerUsuario);
         chatManager = new ChatManager(getApplicationContext());
+        btnDeslogar = findViewById(R.id.btnDeslogar);
 
         // Obtenha as informações do usuário do Intent
         userId = getIntent().getLongExtra("userId", 0L);
@@ -48,6 +52,17 @@ public class AtvChatUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 enviarMensagemUsuario();
+            }
+        });
+
+
+        btnDeslogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lógica para deslogar
+                Intent intent = new Intent(AtvChatUsuario.this, AtvPrincipalEscolha.class);
+                startActivity(intent);
+                finish();  // Encerra a atividade atual
             }
         });
     }

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class AtvEscolhaChat extends AppCompatActivity {
     private EditText editTextMensagem;
     private Button btnEnviarMensagem;
     private ChatManager chatManager;
+    private Spinner statusSpinner; // Mova a declaração para o nível de classe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,10 @@ public class AtvEscolhaChat extends AppCompatActivity {
         editTextMensagem = findViewById(R.id.editTextMensagem);
         btnEnviarMensagem = findViewById(R.id.btnEnviarMensagem);
         chatManager = new ChatManager(getApplicationContext());
+        Button btnEnviarStatus = findViewById(R.id.btnEnviarStatus);
+        statusSpinner = findViewById(R.id.statusSpinner);
+        Button btnVoltar = findViewById(R.id.btnVoltar);
+
 
         btnIniciarChat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +56,20 @@ public class AtvEscolhaChat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 enviarMensagem();
+            }
+        });
+        btnEnviarStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enviarStatus();
+            }
+        });
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AtvEscolhaChat.this, AtvPrincipal.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -180,6 +200,25 @@ public class AtvEscolhaChat extends AppCompatActivity {
             editTextMensagem.setText("");
         }
     }
+
+    private void enviarStatus() {
+        // Obter o item selecionado do Spinner
+        String statusSelecionado = (String) statusSpinner.getSelectedItem();
+
+        if (statusSelecionado != null && !statusSelecionado.isEmpty()) {
+            // Adicionar a mensagem ao layout de mensagens
+            String mensagemFormatada = "STATUS: " + statusSelecionado;
+            exibirMensagemNoChat(mensagemFormatada);
+
+            // Salvar a mensagem no banco de dados
+            String tabelaChatAdmin = String.valueOf(editTextChat.getText());
+            chatManager.salvarMensagem("chat_" + tabelaChatAdmin, mensagemFormatada);
+
+            // Limpar o campo de mensagem após o envio
+            editTextMensagem.setText("");
+        }
+    }
+
 
     private void exibirMensagemNoChat(String mensagem) {
         // Exiba a mensagem no layout do chat

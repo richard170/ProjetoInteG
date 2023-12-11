@@ -29,7 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Digite sua mensagem" />
+        android:hint="Digite sua mensagem"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnEnviarMensagemUsuario"
@@ -37,5 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Enviar Mensagem do Usuário" />
+
+    <!-- Botão Deslogar -->
+    <Button
+        android:id="@+id/btnDeslogar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Deslogar" />
 
 </LinearLayout>
