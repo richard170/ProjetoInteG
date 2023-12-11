@@ -5,44 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="10dp"
+    android:layout_margin="0dp"
     tools:context=".AtvCadVeiculo">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="47dp"
+        android:background="#FF0000"
+        android:text="Cadastro Veiculo"
+        android:gravity="center"
+        android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/cad_veiculo" />
-
-        <Button
-            android:id="@+id/btnExcluir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_excluir" />
-
-        <Button
-            android:id="@+id/btnGravar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_gravar" />
-
-        <Button
-            android:id="@+id/btnVoltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_voltar" />
-
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="539dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,6 +28,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical">
+
+            <!-- Outros elementos e campos de texto -->
 
             <TextView
                 android:id="@+id/textView2"
@@ -59,11 +39,11 @@
 
             <EditText
                 android:id="@+id/edtCodigo"
-                android:layout_width="match_parent"
+                android:layout_width="306dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="none"
-                android:enabled="false" />
+                android:enabled="false"
+                android:inputType="none" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -86,7 +66,7 @@
 
             <EditText
                 android:id="@+id/edtPlaca"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text" />
@@ -141,8 +121,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textMultiLine"
                 android:gravity="start|top"
+                android:inputType="textMultiLine"
                 android:lines="3" />
 
             <!-- Adicione outros elementos conforme necessário -->
@@ -150,4 +130,32 @@
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF0000"
+            android:text="@string/btn_voltar"
+            app:icon="@drawable/voltar" />
+
+        <Button
+            android:id="@+id/btnExcluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF0000"
+            android:text="@string/btn_excluir" />
+
+        <Button
+            android:id="@+id/btnGravar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF0000"
+            android:text="@string/btn_gravar" />
+
+    </LinearLayout>
 </LinearLayout>
